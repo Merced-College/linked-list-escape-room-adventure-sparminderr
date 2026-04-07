@@ -13,6 +13,7 @@ public class AdventureGame {
         scanner = new Scanner(System.in);
     }
 
+    // start menu
     public void play() {
         System.out.println("Welcome to Escape Room Adventure!");
         System.out.println("Collect the correct items before reaching the exit.\n");
@@ -45,6 +46,7 @@ public class AdventureGame {
         System.out.println();
     }
 
+    // manages what to do when an item is found, and prints out a message if you did. 
     private void handleItemPickup() {
         Item item = currentScene.getItem();
 
@@ -59,6 +61,8 @@ public class AdventureGame {
         }
     }
 
+    /* manages the choices that are given, which the user chooses, as well as deciding what to show next
+    */
     private void handleChoices() {
         System.out.println("Choose an option:");
         for (int i = 0; i < currentScene.getChoices().size(); i++) {
@@ -76,6 +80,7 @@ public class AdventureGame {
         }
     }
 
+    // checks if player has the two items necessary to exit, as well as showing what items the user doesn't have and printing a line 
     private void handleFinalRoom() {
         System.out.println("You reached the exit door.");
 
