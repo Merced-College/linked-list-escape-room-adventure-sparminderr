@@ -1,3 +1,4 @@
+package game;
 import java.util.Scanner;
 
 public class AdventureGame {
@@ -11,6 +12,39 @@ public class AdventureGame {
         player = new Player();
         currentScene = scenes.findSceneById(1);
         scanner = new Scanner(System.in);
+    }
+    
+    // getter
+    public Scene getCurrentScene() {
+    	return currentScene;
+    }
+    
+    // getter
+    public Player getPlayer() {
+    	return player;
+    }
+    
+    // getter
+	public SceneLinkedList getScenes() {
+		return scenes;
+	}
+    
+    // tracks where you are in scene, so it can change to next scene
+    public void moveToScene(int nextSceneId) {
+    	currentScene = scenes.findSceneById(nextSceneId);
+    }
+    
+    // picks up items, and removes them when picked up
+    public void pickupCurrentItem() {
+    	if (currentScene.getItem() != null) {
+    		player.addItem(currentScene.getItem());
+    		currentScene.removeItem();
+    	}
+    }
+    
+    // checks if player wins game
+    public boolean canWinGame() {
+    	return player.hasItem("Keycard") && player.hasItem("Code Note"); 
     }
 
     // start menu
@@ -96,4 +130,5 @@ public class AdventureGame {
             System.out.println("To win, you need: Keycard and Code Note.");
         }
     }
+
 }
